@@ -9,7 +9,7 @@ from multiprocessing import Pool, cpu_count
 
 OUTPUT_DIR = "parquet_data"
 START_DATE = datetime(2024, 1, 1)
-END_DATE = datetime(2025, 1, 1)
+END_DATE = datetime(2026, 1, 1)
 
 def generate_data_for_day(day_str):
     day = datetime.strptime(day_str, "%Y-%m-%d")
@@ -18,7 +18,7 @@ def generate_data_for_day(day_str):
     timestamps = pd.date_range(start=day, end=day + timedelta(days=1) - timedelta(seconds=1), freq='S')
     data = {
         "isoTime": timestamps,  # Save as datetime64[ns]
-        "randomNumber": np.random.randint(200, 501, size=len(timestamps))
+        "randomNumber": np.random.randint(200, 1501, size=len(timestamps))
     }
     df = pd.DataFrame(data)
 
